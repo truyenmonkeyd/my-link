@@ -6,72 +6,212 @@
 
   <title>PHƯỢNG VỊ</title>
 
-  <!-- Preview khi gửi/comment link -->
-  <meta property="og:title" content="PHƯỢNG VỊ">
-  <meta
-    property="og:description"
-    content="TRUYỆN ĐÃ HOÀN THÀNH • Liên kết có thể mở trang truyện hoặc Shopee"
-  >
-  <meta property="og:type" content="website">
-
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="PHƯỢNG VỊ">
-  <meta
-    name="twitter:description"
-    content="TRUYỆN ĐÃ HOÀN THÀNH • Liên kết có thể mở trang truyện hoặc Shopee"
-  >
-
   <style>
-    html, body {
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
       margin: 0;
-      padding: 0;
-      background: #fff;
+      min-height: 100vh;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      padding: 24px;
+
+      font-family: "Georgia", "Times New Roman", serif;
+
+      background:
+        linear-gradient(
+          135deg,
+          #fff8f5,
+          #fbeeee
+        );
+
+      color: #4a3434;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 520px;
+
+      background: rgba(255, 255, 255, 0.94);
+
+      padding: 38px 28px;
+
+      border-radius: 22px;
+
+      box-shadow:
+        0 12px 35px rgba(110, 70, 70, 0.12);
+
+      text-align: center;
+
+      border: 1px solid #f2dddd;
+    }
+
+    .decoration {
+      font-size: 22px;
+      margin-bottom: 12px;
+      color: #b77b7b;
+    }
+
+    h1 {
+      margin: 0;
+
+      font-size: 32px;
+      letter-spacing: 3px;
+
+      color: #6d4141;
+    }
+
+    .subtitle {
+      margin-top: 10px;
+      margin-bottom: 28px;
+
+      font-size: 13px;
+      letter-spacing: 2px;
+
+      color: #a47b7b;
+    }
+
+    .line {
+      width: 65px;
+      height: 2px;
+
+      background: #d9b0b0;
+
+      margin: 0 auto 28px;
+      border-radius: 10px;
+    }
+
+    .message {
+      font-family: Arial, Helvetica, sans-serif;
+
+      font-size: 17px;
+      line-height: 1.8;
+
+      color: #544444;
+    }
+
+    .message strong {
+      color: #ee4d2d;
+    }
+
+    .shopee-button {
+      display: block;
+
+      margin-top: 28px;
+
+      padding: 15px 22px;
+
+      border-radius: 50px;
+
+      background: #ee4d2d;
+      color: white;
+
+      text-decoration: none;
+
+      font-family: Arial, Helvetica, sans-serif;
+
+      font-size: 16px;
+      font-weight: bold;
+
+      box-shadow:
+        0 8px 20px rgba(238, 77, 45, 0.22);
+
+      transition: 0.2s;
+    }
+
+    .shopee-button:hover {
+      transform: translateY(-2px);
+    }
+
+    .link-text {
+      margin-top: 17px;
+
+      font-family: Arial, Helvetica, sans-serif;
+
+      font-size: 12px;
+
+      color: #ad9292;
+
+      word-break: break-all;
+    }
+
+    .footer {
+      margin-top: 30px;
+
+      font-size: 12px;
+      color: #b9a1a1;
+    }
+
+    @media (max-width: 520px) {
+
+      body {
+        padding: 16px;
+      }
+
+      .card {
+        padding: 32px 21px;
+      }
+
+      h1 {
+        font-size: 27px;
+      }
+
+      .message {
+        font-size: 16px;
+      }
+
     }
   </style>
 </head>
 
 <body>
 
-<script>
-  const shopeeLink =
-    "https://s.shopee.vn/2LXOs0571K";
+  <div class="card">
 
-  const monkeyDLink =
-    "https://monkeydd.com/phuong-vi-nhym.html";
+    <div class="decoration">
+      ✦ ❀ ✦
+    </div>
 
-  /*
-    Chu kỳ:
-    1 = Shopee
-    2 = MonkeyD
-    3 = MonkeyD
-    4 = MonkeyD
+    <h1>PHƯỢNG VỊ</h1>
 
-    5 = Shopee
-    6 = MonkeyD
-    7 = MonkeyD
-    8 = MonkeyD
+    <div class="subtitle">
+      TRUYỆN ĐÃ HOÀN THÀNH
+    </div>
 
-    rồi lặp lại...
-  */
+    <div class="line"></div>
 
-  const key = "phuong_vi_cycle_v10";
+    <div class="message">
 
-  let count =
-    parseInt(localStorage.getItem(key) || "0", 10);
+      Mời bạn click vào liên kết bên dưới và
+      <br>
 
-  count++;
+      <strong>MỞ ỨNG DỤNG SHOPEE</strong>
+      <br>
 
-  localStorage.setItem(key, String(count));
+      để tiếp tục.
 
-  const goShopee =
-    ((count - 1) % 4 === 0);
+    </div>
 
-  if (goShopee) {
-    window.location.replace(shopeeLink);
-  } else {
-    window.location.replace(monkeyDLink);
-  }
-</script>
+    <a
+      class="shopee-button"
+      href="https://s.shopee.vn/2LXOs0571K">
+      MỞ SHOPEE
+    </a>
+
+    <div class="link-text">
+      https://s.shopee.vn/2LXOs0571K
+    </div>
+
+    <div class="footer">
+      ✧ Cảm ơn bạn đã ghé đọc truyện ✧
+    </div>
+
+  </div>
 
 </body>
 </html>
