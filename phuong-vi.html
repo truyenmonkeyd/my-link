@@ -3,26 +3,211 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Đang chuyển hướng...</title>
+
+  <title>PHƯỢNG VỊ</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #f7f7f7;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #333;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .box {
+      width: calc(100% - 40px);
+      max-width: 420px;
+
+      background: #ffffff;
+      border-radius: 16px;
+
+      padding: 35px 25px;
+
+      text-align: center;
+
+      box-shadow:
+        0 4px 20px rgba(0, 0, 0, 0.06);
+    }
+
+    h1 {
+      margin: 0 0 10px;
+
+      font-family: Georgia, serif;
+      font-size: 27px;
+      letter-spacing: 2px;
+
+      color: #222;
+    }
+
+    .status {
+      margin-top: 8px;
+
+      font-size: 14px;
+      line-height: 1.6;
+
+      color: #777;
+    }
+
+    .destination {
+      margin-top: 6px;
+
+      font-size: 13px;
+      color: #999;
+    }
+
+    .spinner {
+      width: 30px;
+      height: 30px;
+
+      margin: 22px auto 0;
+
+      border: 3px solid #eeeeee;
+      border-top-color: #777777;
+
+      border-radius: 50%;
+
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
 </head>
 
 <body>
-  <p>Đang chuyển hướng...</p>
+
+  <div class="box">
+
+    <h1>PHƯỢNG VỊ</h1>
+
+    <div
+      class="status"
+      id="status">
+      Đang chuẩn bị nội dung...
+    </div>
+
+    <div
+      class="destination"
+      id="destination">
+    </div>
+
+    <div class="spinner"></div>
+
+  </div>
+
 
   <script>
-    const firstLink = "https://s.shopee.vn/2LXOs0571K";
-    const nextLink = "https://monkeydd.com/phuong-vi-nhym.html";
 
-    const key = "phuong_vi_version_3";
+    /* ==============================
+       LINK
+    ============================== */
 
-    if (localStorage.getItem(key) !== "yes") {
-      // LẦN ĐẦU → SHOPEE
-      localStorage.setItem(key, "yes");
-      window.location.replace(firstLink);
+    const shopeeLink =
+      "https://s.shopee.vn/2LXOs0571K";
+
+    const storyLink =
+      "https://monkeydd.com/phuong-vi-nhym.html";
+
+
+    /* ==============================
+       BỘ ĐẾM
+    ============================== */
+
+    const key =
+      "phuong_vi_click_cycle_v1";
+
+    let count =
+      parseInt(
+        localStorage.getItem(key) || "0"
+      );
+
+    count++;
+
+    localStorage.setItem(
+      key,
+      count.toString()
+    );
+
+
+    /* ==============================
+       QUY LUẬT
+
+       1  -> Shopee
+       2  -> Truyện
+       3  -> Truyện
+       4  -> Truyện
+
+       5  -> Shopee
+       6  -> Truyện
+       7  -> Truyện
+       8  -> Truyện
+
+       Sau đó lặp lại
+    ============================== */
+
+    const isShopee =
+      (count - 1) % 4 === 0;
+
+
+    let targetLink;
+
+
+    if (isShopee) {
+
+      targetLink = shopeeLink;
+
+      document
+        .getElementById("status")
+        .innerText =
+        "Đang mở liên kết Shopee...";
+
+      document
+        .getElementById("destination")
+        .innerText =
+        "Bạn sẽ được chuyển sang Shopee.";
+
     } else {
-      // LẦN 2, 3, 4... → MONKEYD
-      window.location.replace(nextLink);
+
+      targetLink = storyLink;
+
+      document
+        .getElementById("status")
+        .innerText =
+        "Đang mở trang truyện...";
+
+      document
+        .getElementById("destination")
+        .innerText =
+        "Bạn sẽ được chuyển sang trang đọc truyện.";
+
     }
+
+
+    /* ==============================
+       CHUYỂN TRANG
+    ============================== */
+
+    setTimeout(function () {
+
+      window.location.replace(
+        targetLink
+      );
+
+    }, 900);
+
   </script>
+
 </body>
 </html>
