@@ -14,23 +14,26 @@
     body {
       margin: 0;
       min-height: 100vh;
-      background: #f7f7f7;
-      font-family: Arial, Helvetica, sans-serif;
-      color: #333;
 
       display: flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
+
+      background: #f7f7f7;
+
+      font-family: Arial, Helvetica, sans-serif;
+      color: #222;
     }
 
     .box {
       width: calc(100% - 40px);
       max-width: 420px;
 
-      background: #ffffff;
-      border-radius: 16px;
+      padding: 38px 24px;
 
-      padding: 35px 25px;
+      background: #ffffff;
+
+      border-radius: 16px;
 
       text-align: center;
 
@@ -39,49 +42,27 @@
     }
 
     h1 {
-      margin: 0 0 10px;
+      margin: 0 0 12px;
 
       font-family: Georgia, serif;
-      font-size: 27px;
+      font-size: 30px;
       letter-spacing: 2px;
-
-      color: #222;
     }
 
-    .status {
-      margin-top: 8px;
+    .completed {
+      margin: 0;
 
       font-size: 14px;
-      line-height: 1.6;
+      font-weight: 600;
 
       color: #777;
     }
 
     .destination {
-      margin-top: 6px;
+      margin-top: 22px;
 
-      font-size: 13px;
-      color: #999;
-    }
-
-    .spinner {
-      width: 30px;
-      height: 30px;
-
-      margin: 22px auto 0;
-
-      border: 3px solid #eeeeee;
-      border-top-color: #777777;
-
-      border-radius: 50%;
-
-      animation: spin 0.8s linear infinite;
-    }
-
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
+      font-size: 12px;
+      color: #aaa;
     }
   </style>
 </head>
@@ -92,48 +73,49 @@
 
     <h1>PHƯỢNG VỊ</h1>
 
-    <div
-      class="status"
-      id="status">
-      Đang chuẩn bị nội dung...
-    </div>
+    <p class="completed">
+      TRUYỆN ĐÃ HOÀN THÀNH
+    </p>
 
-    <div
+    <p
       class="destination"
       id="destination">
-    </div>
-
-    <div class="spinner"></div>
+    </p>
 
   </div>
 
 
   <script>
 
-    /* ==============================
-       LINK
-    ============================== */
-
+    /* LINK SHOPEE */
     const shopeeLink =
       "https://s.shopee.vn/2LXOs0571K";
 
+
+    /* LINK TRUYỆN */
     const storyLink =
       "https://monkeydd.com/phuong-vi-nhym.html";
 
 
-    /* ==============================
-       BỘ ĐẾM
-    ============================== */
+    /*
+      Bộ đếm riêng trên trình duyệt.
+
+      Đổi tên key nếu muốn reset
+      và bắt đầu lại từ lượt số 1.
+    */
 
     const key =
-      "phuong_vi_click_cycle_v1";
+      "phuong_vi_cycle_v6";
+
 
     let count =
       parseInt(
         localStorage.getItem(key) || "0"
       );
 
+
     count++;
+
 
     localStorage.setItem(
       key,
@@ -141,71 +123,64 @@
     );
 
 
-    /* ==============================
-       QUY LUẬT
+    /*
+      CHU KỲ:
 
-       1  -> Shopee
-       2  -> Truyện
-       3  -> Truyện
-       4  -> Truyện
+      1  = Shopee
 
-       5  -> Shopee
-       6  -> Truyện
-       7  -> Truyện
-       8  -> Truyện
+      2  = MonkeyD
+      3  = MonkeyD
+      4  = MonkeyD
 
-       Sau đó lặp lại
-    ============================== */
+      5  = Shopee
 
-    const isShopee =
-      (count - 1) % 4 === 0;
+      6  = MonkeyD
+      7  = MonkeyD
+      8  = MonkeyD
+
+      9  = Shopee
+
+      ... cứ lặp lại
+    */
+
+    const goShopee =
+      ((count - 1) % 4 === 0);
 
 
-    let targetLink;
+    let target;
 
 
-    if (isShopee) {
+    if (goShopee) {
 
-      targetLink = shopeeLink;
-
-      document
-        .getElementById("status")
-        .innerText =
-        "Đang mở liên kết Shopee...";
+      target = shopeeLink;
 
       document
         .getElementById("destination")
-        .innerText =
-        "Bạn sẽ được chuyển sang Shopee.";
+        .textContent =
+        "Đang mở liên kết Shopee...";
 
     } else {
 
-      targetLink = storyLink;
-
-      document
-        .getElementById("status")
-        .innerText =
-        "Đang mở trang truyện...";
+      target = storyLink;
 
       document
         .getElementById("destination")
-        .innerText =
-        "Bạn sẽ được chuyển sang trang đọc truyện.";
+        .textContent =
+        "Đang mở trang truyện...";
 
     }
 
 
-    /* ==============================
-       CHUYỂN TRANG
-    ============================== */
+    /*
+      Chờ một chút để giao diện
+      kịp hiện rồi mới chuyển trang.
+    */
 
     setTimeout(function () {
 
-      window.location.replace(
-        targetLink
-      );
+      window.location.replace(target);
 
-    }, 900);
+    }, 700);
 
   </script>
 
