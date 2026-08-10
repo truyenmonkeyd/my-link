@@ -1,134 +1,77 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
-  <!-- TIÊU ĐỀ PREVIEW -->
   <title>PHƯỢNG VỊ</title>
 
-  <!-- PREVIEW KHI GỬI LINK -->
-  <meta
-    property="og:title"
-    content="PHƯỢNG VỊ"
-  >
-
+  <!-- Preview khi gửi/comment link -->
+  <meta property="og:title" content="PHƯỢNG VỊ">
   <meta
     property="og:description"
-    content="TRUYỆN ĐÃ HOÀN THÀNH • Có liên kết ngoài"
+    content="TRUYỆN ĐÃ HOÀN THÀNH • Liên kết có thể mở trang truyện hoặc Shopee"
   >
+  <meta property="og:type" content="website">
 
-  <meta
-    property="og:type"
-    content="website"
-  >
-
-  <!-- PREVIEW TRÊN MỘT SỐ ỨNG DỤNG KHÁC -->
-  <meta
-    name="twitter:card"
-    content="summary"
-  >
-
-  <meta
-    name="twitter:title"
-    content="PHƯỢNG VỊ"
-  >
-
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="PHƯỢNG VỊ">
   <meta
     name="twitter:description"
-    content="TRUYỆN ĐÃ HOÀN THÀNH • Có liên kết ngoài"
+    content="TRUYỆN ĐÃ HOÀN THÀNH • Liên kết có thể mở trang truyện hoặc Shopee"
   >
-</head>
 
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #fff;
+    }
+  </style>
+</head>
 
 <body>
 
 <script>
-
-  /*
-    LINK SHOPEE
-    Lượt 1, 5, 9, 13...
-  */
-
   const shopeeLink =
     "https://s.shopee.vn/2LXOs0571K";
 
-
-  /*
-    LINK TRUYỆN
-    Lượt 2, 3, 4,
-    6, 7, 8...
-  */
-
-  const storyLink =
+  const monkeyDLink =
     "https://monkeydd.com/phuong-vi-nhym.html";
 
-
   /*
-    BỘ ĐẾM
+    Chu kỳ:
+    1 = Shopee
+    2 = MonkeyD
+    3 = MonkeyD
+    4 = MonkeyD
 
-    Muốn reset về lượt 1:
-    đổi v8 thành v9, v10...
+    5 = Shopee
+    6 = MonkeyD
+    7 = MonkeyD
+    8 = MonkeyD
+
+    rồi lặp lại...
   */
 
-  const key =
-    "phuong_vi_cycle_v8";
-
+  const key = "phuong_vi_cycle_v10";
 
   let count =
-    parseInt(
-      localStorage.getItem(key) || "0"
-    );
-
+    parseInt(localStorage.getItem(key) || "0", 10);
 
   count++;
 
+  localStorage.setItem(key, String(count));
 
-  localStorage.setItem(
-    key,
-    count.toString()
-  );
+  const goShopee =
+    ((count - 1) % 4 === 0);
 
-
-  /*
-    CHU KỲ:
-
-    1  → Shopee
-    2  → MonkeyD
-    3  → MonkeyD
-    4  → MonkeyD
-
-    5  → Shopee
-    6  → MonkeyD
-    7  → MonkeyD
-    8  → MonkeyD
-
-    9  → Shopee
-    ...
-  */
-
-
-  if ((count - 1) % 4 === 0) {
-
-    window.location.replace(
-      shopeeLink
-    );
-
+  if (goShopee) {
+    window.location.replace(shopeeLink);
   } else {
-
-    window.location.replace(
-      storyLink
-    );
-
+    window.location.replace(monkeyDLink);
   }
-
 </script>
 
 </body>
-
 </html>
