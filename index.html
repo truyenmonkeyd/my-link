@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đang chuyển hướng...</title>
+</head>
+
+<body>
+  <p>Đang chuyển hướng...</p>
+
+  <script>
+    const linkA = "https://monkeydd.com/phuong-vi-nhym.html";
+    const linkB = "https://s.shopee.vn/8KobywvTCF";
+
+    const key = "clicked_phuong_vi_nhym";
+
+    function redirect() {
+      const clickedBefore = localStorage.getItem(key);
+
+      if (clickedBefore === "yes") {
+        window.location.href = linkA;
+      } else {
+        localStorage.setItem(key, "yes");
+        window.location.href = linkB;
+      }
+    }
+
+    window.addEventListener("pageshow", redirect);
+  </script>
+</body>
+</html>
