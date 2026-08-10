@@ -7,28 +7,21 @@
 </head>
 
 <body>
-  <p id="message">Đang chuyển hướng...</p>
+  <p>Đang chuyển hướng...</p>
 
   <script>
-    const linkA = "https://monkeydd.com/phuong-vi-nhym.html";
-    const linkB = "https://s.shopee.vn/8KobywvTCF";
+    const shopeeLink = "https://s.shopee.vn/8KobywvTCF";
+    const storyLink = "https://monkeydd.com/phuong-vi-nhym.html";
 
-    const key = "phuong_vi_clicked";
+    const key = "phuong_vi_da_bam";
 
-    const daBam = localStorage.getItem(key);
-
-    if (!daBam) {
-      // LẦN ĐẦU → LINK A
+    if (localStorage.getItem(key) !== "yes") {
+      // LẦN 1 → SHOPEE
       localStorage.setItem(key, "yes");
-      document.getElementById("message").innerText =
-        "Đang chuyển đến trang truyện...";
-      window.location.replace(linkA);
-
+      window.location.replace(shopeeLink);
     } else {
-      // LẦN 2, 3, 4... → LINK B
-      document.getElementById("message").innerText =
-        "Đang chuyển đến liên kết Shopee...";
-      window.location.replace(linkB);
+      // LẦN 2, 3, 4... → MONKEYD
+      window.location.replace(storyLink);
     }
   </script>
 </body>
