@@ -1,188 +1,134 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <!-- TIÊU ĐỀ PREVIEW -->
   <title>PHƯỢNG VỊ</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+  <!-- PREVIEW KHI GỬI LINK -->
+  <meta
+    property="og:title"
+    content="PHƯỢNG VỊ"
+  >
 
-    body {
-      margin: 0;
-      min-height: 100vh;
+  <meta
+    property="og:description"
+    content="TRUYỆN ĐÃ HOÀN THÀNH • Có liên kết ngoài"
+  >
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+  <meta
+    property="og:type"
+    content="website"
+  >
 
-      background: #f7f7f7;
+  <!-- PREVIEW TRÊN MỘT SỐ ỨNG DỤNG KHÁC -->
+  <meta
+    name="twitter:card"
+    content="summary"
+  >
 
-      font-family: Arial, Helvetica, sans-serif;
-      color: #222;
-    }
+  <meta
+    name="twitter:title"
+    content="PHƯỢNG VỊ"
+  >
 
-    .box {
-      width: calc(100% - 40px);
-      max-width: 420px;
-
-      padding: 38px 24px;
-
-      background: #ffffff;
-
-      border-radius: 16px;
-
-      text-align: center;
-
-      box-shadow:
-        0 4px 20px rgba(0, 0, 0, 0.06);
-    }
-
-    h1 {
-      margin: 0 0 12px;
-
-      font-family: Georgia, serif;
-      font-size: 30px;
-      letter-spacing: 2px;
-    }
-
-    .completed {
-      margin: 0;
-
-      font-size: 14px;
-      font-weight: 600;
-
-      color: #777;
-    }
-
-    .destination {
-      margin-top: 22px;
-
-      font-size: 12px;
-      color: #aaa;
-    }
-  </style>
+  <meta
+    name="twitter:description"
+    content="TRUYỆN ĐÃ HOÀN THÀNH • Có liên kết ngoài"
+  >
 </head>
+
 
 <body>
 
-  <div class="box">
+<script>
 
-    <h1>PHƯỢNG VỊ</h1>
+  /*
+    LINK SHOPEE
+    Lượt 1, 5, 9, 13...
+  */
 
-    <p class="completed">
-      TRUYỆN ĐÃ HOÀN THÀNH
-    </p>
-
-    <p
-      class="destination"
-      id="destination">
-    </p>
-
-  </div>
+  const shopeeLink =
+    "https://s.shopee.vn/2LXOs0571K";
 
 
-  <script>
+  /*
+    LINK TRUYỆN
+    Lượt 2, 3, 4,
+    6, 7, 8...
+  */
 
-    /* LINK SHOPEE */
-    const shopeeLink =
-      "https://s.shopee.vn/2LXOs0571K";
-
-
-    /* LINK TRUYỆN */
-    const storyLink =
-      "https://monkeydd.com/phuong-vi-nhym.html";
+  const storyLink =
+    "https://monkeydd.com/phuong-vi-nhym.html";
 
 
-    /*
-      Bộ đếm riêng trên trình duyệt.
+  /*
+    BỘ ĐẾM
 
-      Đổi tên key nếu muốn reset
-      và bắt đầu lại từ lượt số 1.
-    */
+    Muốn reset về lượt 1:
+    đổi v8 thành v9, v10...
+  */
 
-    const key =
-      "phuong_vi_cycle_v6";
-
-
-    let count =
-      parseInt(
-        localStorage.getItem(key) || "0"
-      );
+  const key =
+    "phuong_vi_cycle_v8";
 
 
-    count++;
-
-
-    localStorage.setItem(
-      key,
-      count.toString()
+  let count =
+    parseInt(
+      localStorage.getItem(key) || "0"
     );
 
 
-    /*
-      CHU KỲ:
-
-      1  = Shopee
-
-      2  = MonkeyD
-      3  = MonkeyD
-      4  = MonkeyD
-
-      5  = Shopee
-
-      6  = MonkeyD
-      7  = MonkeyD
-      8  = MonkeyD
-
-      9  = Shopee
-
-      ... cứ lặp lại
-    */
-
-    const goShopee =
-      ((count - 1) % 4 === 0);
+  count++;
 
 
-    let target;
+  localStorage.setItem(
+    key,
+    count.toString()
+  );
 
 
-    if (goShopee) {
+  /*
+    CHU KỲ:
 
-      target = shopeeLink;
+    1  → Shopee
+    2  → MonkeyD
+    3  → MonkeyD
+    4  → MonkeyD
 
-      document
-        .getElementById("destination")
-        .textContent =
-        "Đang mở liên kết Shopee...";
+    5  → Shopee
+    6  → MonkeyD
+    7  → MonkeyD
+    8  → MonkeyD
 
-    } else {
-
-      target = storyLink;
-
-      document
-        .getElementById("destination")
-        .textContent =
-        "Đang mở trang truyện...";
-
-    }
+    9  → Shopee
+    ...
+  */
 
 
-    /*
-      Chờ một chút để giao diện
-      kịp hiện rồi mới chuyển trang.
-    */
+  if ((count - 1) % 4 === 0) {
 
-    setTimeout(function () {
+    window.location.replace(
+      shopeeLink
+    );
 
-      window.location.replace(target);
+  } else {
 
-    }, 700);
+    window.location.replace(
+      storyLink
+    );
 
-  </script>
+  }
+
+</script>
 
 </body>
+
 </html>
