@@ -10,18 +10,18 @@
   <p>Đang chuyển hướng...</p>
 
   <script>
-    const shopeeLink = "https://s.shopee.vn/8KobywvTCF";
-    const storyLink = "https://monkeydd.com/phuong-vi-nhym.html";
+    const firstLink = "https://s.shopee.vn/2LXOs0571K";
+    const nextLink = "https://monkeydd.com/phuong-vi-nhym.html";
 
-    const key = "phuong_vi_da_bam";
+    const key = "phuong_vi_version_3";
 
     if (localStorage.getItem(key) !== "yes") {
-      // LẦN 1 → SHOPEE
+      // LẦN ĐẦU → SHOPEE
       localStorage.setItem(key, "yes");
-      window.location.replace(shopeeLink);
+      window.location.replace(firstLink);
     } else {
       // LẦN 2, 3, 4... → MONKEYD
-      window.location.replace(storyLink);
+      window.location.replace(nextLink);
     }
   </script>
 </body>
